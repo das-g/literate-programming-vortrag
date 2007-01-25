@@ -1,0 +1,8 @@
+\beamer@endinputifotherversion {3.01pt}
+\beamer@sectionintoc {1}{Die Idee}{2}{0}{1}
+\beamer@sectionintoc {2}{{\tt WEB}}{6}{0}{2}
+\beamer@subsectionintoc {2}{1}{Prinzip}{8}{0}{2}
+\beamer@subsectionintoc {2}{2}{weben, {T\kern -.1667em\lower .5ex\hbox {E}\kern -.125emX\spacefactor \@m }en, lesen}{12}{0}{2}
+\beamer@subsectionintoc {2}{3}{verwickeln, kompilieren, laufenlassen}{19}{0}{2}
+\beamer@subsectionintoc {2}{4}{Features}{20}{0}{2}
+\beamer@sectionintoc {3}{Ausblick}{21}{0}{3}

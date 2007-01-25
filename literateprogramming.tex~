@@ -1,0 +1,212 @@
+% literateprogramming.tex
+%
+% Folien zu Fallstuden-Vortrag über das Paper
+% 	D.E. Knuth
+% 	Literate Programming
+% 	The Computer J. 27 (1984) 97-111
+% 
+% Raphael Das Gupta <raphaeld@student.ethz.ch>
+% (K) 2007 -- ALL RITES REVERSED -- Reprint what you like.
+%
+% Quellen:
+%	* Das Paper selbst:
+%		http://www.literateprogramming.com/knuthweb.pdf
+%
+\documentclass[10pt]{beamer}
+%
+\usepackage[utf8]{inputenc}
+\usepackage[all]{xy}
+\usepackage{verbatim}
+
+\def\WEB{{\tt WEB}}
+\def\PASCAL{{\rm PASCAL}}
+\def\C{{\rm C}}
+\def\Cpp{{\rm C++}}
+
+\mode<beamer>{%
+	\usetheme[hideothersubsections,
+	right, width=22mm]{Goettingen}
+}
+
+\title{Donald E. Knuth: Literate Programming}
+\author[R. Das Gupta]{Raphael Das Gupta}
+\institute{ETH Zürich}
+%\titlegraphic{\includegraphics[width=20mm]{test}}
+\date{25.01.2007}
+
+\begin{document}
+%%%%    T I T E L S E I T E     %%%%
+\begin{frame}<handout:0>  % nicht im Handout
+	\titlepage
+\end{frame}
+
+\section{Die Idee}
+
+\begin{comment}
+\begin{frame}
+	\frametitle{Programme als literarische Werke}\pause
+	\begin{block}{``Was soll das nun heissen?''}
+	\end{block}
+\end{frame}
+
+\subsection{Vorraussetzungen}
+
+\begin{frame}
+	\frametitle{Vorraussetzungen}
+	\begin{itemize}
+		\item Strukturierte Programme\pause
+		\item Bedürfnis nach besserer Dokumentation
+	\end{itemize}
+\end{frame}
+
+\subsection{Ziel}
+\end{comment}
+
+\begin{frame}
+	\frametitle{Die Idee: Programme als literarische Werke}
+	\begin{block}{Änderung der Grundeinstellung gegenüber dem, was ein Programm ist/soll}
+		Hauptzweck eines Programms:
+		\begin{itemize}
+			\item nicht mehr den Computer anzuweisen, was er zu tun hat \pause \dots
+			\item sondern einem Menschen erklären was der Computer tun soll
+		\end{itemize}
+	\end{block}
+\end{frame}
+\begin{comment}
+\begin{frame}
+	\frametitle{Die Idee: Programme als literarische Werke}
+	{Das Programm muss:}
+	\begin{itemize}
+		\item ``angenehm'' zu lesen und \dots
+		\item gut verständlich sein\pause
+	\end{itemize}
+		{Es soll trotzdem:}
+	\begin{itemize}
+		\item korrekt kompilieren
+		\item dann das tun, was es sollte
+	\end{itemize}
+\end{frame}
+\end{comment}
+
+\begin{frame}
+	\frametitle{Angenehmer Nebeneffekt}
+	Zwang, die Motivation zu Hinterfragen\pause \\
+	$\Rightarrow$ Durchdachtere Programme
+\end{frame}
+
+\section{\WEB}
+\begin{frame}
+	\frametitle{\WEB}
+	Komplexe Programme als
+	\begin{itemize}
+		\item einfache (kleine) Programmteile\pause und
+		\item einfache Beziehungen zwischen diesen
+	\end{itemize}
+\end{frame}
+\subsection{Prinzip}
+
+\begin{frame}
+	\frametitle{Funktionsprinzip von \WEB}
+	\begin{block}{Zweisprachigkeit}
+		\begin{itemize}
+			\item Formatierungssprache: \pause \TeX
+			\item Programmiersprache: \pause \PASCAL
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Zwei Toolchains}
+	\begin{displaymath}
+		\xymatrix{ & \tt TEX \ar[r]^{\rm{TeX}} & \tt PDF/DVI \\
+		          \tt WEB \ar[ru]^{\tt{weave}} \ar[rd]_{\tt{tangle}}  &         &             \\
+		           & \tt PAS \ar[r]_\PASCAL & \tt BINARY}
+	\end{displaymath}
+\end{frame}
+
+\subsection{weben, {\TeX}en, lesen}
+
+\begin{frame}
+	\frametitle{Aufbau der erzeugten Dokumentation}
+	\begin{itemize}
+		\uncover<6->{\item Inhalt}
+		\item Kapitel
+		\uncover<2->{
+		\begin{itemize}
+			\item{Titel}
+			\item{Beschreibung} \uncover<3->{: \TeX}
+			\item{Substitutionen}\uncover<4->{, z.B.:\\
+				{\tt {\textbf{define} print\_string(\#)$\equiv$write(\#)}}}
+			\item{Quelltext}\uncover<5->{: Code-Blöcke}
+		\end{itemize}
+		}
+		\uncover<7->{\item Index}
+	\end{itemize}
+\end{frame}
+
+
+\subsection{verwickeln, kompilieren, laufenlassen}
+
+\begin{frame}
+	\frametitle{verwickeln, kompilieren, laufenlassen}
+	Quelltext ``unlesbar''
+\end{frame}
+
+\subsection{Features}
+
+\begin{frame}
+	\begin{itemize}
+		\item Spezielle Behandlung von {\tt char}s und {\tt string}s
+		\item changefiles
+		\item kein Zwang zu top-down oder bottom-up
+		\item simple Arithmetik zur teangle-Zeit
+	\end{itemize}
+\end{frame}
+
+\section{Ausblick}
+
+\begin{frame}
+	\frametitle{Andere Literate-Programming-Tools}
+	\begin{itemize}
+		\item cweb
+		\uncover<2->{
+			\begin{itemize}
+				\item \C, \Cpp, (java)
+				\item \TeX
+			\end{itemize}
+		}
+		\item noweb		
+		\uncover<3->{
+			\begin{itemize}
+				\item beliebige Programmiersprachen
+				\item \TeX, \LaTeX, html, troff
+			\end{itemize}
+		}
+		\item funnelweb
+		\uncover<4->{
+			\begin{itemize}
+				\item beliebige Programmiersprachen
+				\item \TeX, html
+			\end{itemize}
+		}
+		\item LEO ``Literate Editor with Outlines''
+	\end{itemize}
+	\uncover<5->{
+		inzwischen auch interaktive Dokumentationen möglich
+	}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Semi-Literate Programming}
+	z.B. javadoc, doc++
+
+	Hauptunterschied: bei ``Full-Literate'' kann Reihenfolge der Kapitel frei gewählt werden
+\end{frame}
+
+\section{}
+\begin{frame}
+	http://literateprogramming.com/
+\end{frame}
+
+\end{document}
+
